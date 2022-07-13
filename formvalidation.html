@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="2.js"></script>
+    <style type="text/css">
+        
+
+        ul li {
+            background-color: yellow;
+            width: 150px;
+            height:30px;
+            list-style: none;
+            border-radius:10px;
+            position:relative;
+        }
+
+        button {
+            position:absolute;
+            right:1px;
+            background-color: blue;
+            
+            border-radius:10px;
+        }
+
+            button:hover {
+                background-color: orangered;
+            }
+    </style>
+</head>
+<body>
+    <center>
+
+
+
+        <div style="background-color:dimgrey;width:700px;height:950px;margin-top:0px;">
+            <h1 align="center" style="background-color:black;color:red;padding-top:10px;padding-bottom:10px;">Registration Form</h1>
+            <form id="myForm" action="s.php" method="post" onsubmit="return form();">
+
+
+
+
+                <input type="text" id="fname" placeholder="First Name" style=" width:300px;height:35px;margin-left:50px">
+                <label style="visibility:hidden;color:red" id="valid">invalid data!!</label>
+                <br><br>
+                <input type="text" id="mname" placeholder="Middle Name(optional)" style=" width: 300px; height: 35px;margin-left:50px" />
+                <label style="visibility:hidden;color:red" id="valid1">invalid data!!</label><br><br>
+
+                <input type="text" id="lname" placeholder="Last Name" style=" width: 300px; height: 35px; margin-left: 50px" />
+                <label style="visibility:hidden;color:red" id="valid2">invalid data!!</label><br><br>
+                <input type="text" id="Funame" placeholder="Full Name" style=" width: 300px; height: 35px; margin-right: 5px" /><input type="button" id="check" value="show" style="font-size:10px;height:20px;width:40px" /><br><br>
+
+                <input type="text" id='email' placeholder="Enter Email" style=" width: 300px; height: 35px; margin-right: 7px; margin-left: 50px"><label style="visibility:hidden;color:red" id="valid3">invalid data!!</label><br><br>
+
+
+
+
+
+                <input type="password" name="password" placeholder="Enter Password" id="myInput" style=" width: 300px; height: 35px; margin-right: 95px; margin-left: 50px">
+                <i class="far fa-eye" id="myInputss" onclick="myFunction()" style="position:absolute;left:62%; top:89%; display:block;width:30px"></i>
+                <i class="fas fa-eye-slash" id="myInputs" style="display:none;position:absolute;left:62%; top:89%;width:30px" onclick="myFunction()"></i>
+                <br><br>
+
+                <select id="country" onchange="code();">
+                    <option value="select country"></option>
+                    <option value="India">Ind</option>
+                    <option value="US">US</option>
+
+
+
+                </select>
+                <input id="output" type="text" placeholder="phone number" on style=" width: 300px; height: 35px; margin-right: 95px;" onfocus="check();" /><br><br>
+
+
+
+                <fieldset style="border-style:solid;border-color:red;">
+
+                    <b>Hobbies:</b><input type="text" name="" id="first" style=" width: 300px; height: 35px; margin-right: 64px;">
+                    <input type="button" value="Add" id="submit">
+
+
+
+
+
+                    <center>
+                        <b>Hobbies are:</b>
+                    </center>
+                    <center>
+                        <ul id="ul">
+                        </ul>
+                    </center>
+                </fieldset>
+
+
+                <label for="txtbirthdate">Date of Birth</label>
+                <input id="txtbirthdate" type="text" name="txtbirthdate" maxlength="10" placeholder="mm/dd/yyyy" onkeyup="getAgeVal(0)" onblur="getAgeVal(0);">
+                <label for="txtage">Age</label>
+                <input type="text" name="txtage" id="txtage" autocomplete="off" disabled><br><br>
+
+                <label style="font-weight:bold;">Adress:</label><br>
+                <textarea style="width:400px;height:60px;font-size:10px" id="adress" onchange="address();"></textarea><br><br>
+
+                <input type="file"
+                       id="file"
+                       onchange="Filevalidation()">
+                <br><br>
+
+
+
+
+
+                <input type="checkbox" required>I agree to the terms above<br><br>
+
+
+
+                <input type="button" value="Reset" onClick="fun();" style="background-color:rgba(200,10,20,0.7);width:100px;border-radius:10px;" />
+                <input type="submit" style="margin-left:30px;background-color:rgba(200,10,10,0.6);width:100px;border-radius:10px" />
+            </form>
+
+            <div style="width:400px;height:50px;margin-top:10px;">
+                <p style="color:greenyellow">if you have already an account?<br><a href="examlogin.html">click here</a>   to login</p>
+            </div>
+        </div>
+
+
+    </center>
+
+    <script>
+        var myform = document.getElementById("submit");
+        myform.addEventListener("click", additem, false);
+        var ul = document.getElementById("ul");
+        ul.addEventListener("click", removeitem);
+        var search = document.getElementById("search");
+        search.addEventListener("keyup", searchitem, false);
+        function additem(e) {
+
+            e.preventDefault();
+
+            var f = document.getElementById("first").value;
+            var l = document.createElement("li");
+
+            var fil = document.createTextNode(f);
+            l.appendChild(fil);
+
+            var dbtn = document.createElement("button");
+            var l1 = document.createTextNode("X");
+            dbtn.setAttribute("class", "delete");
+            dbtn.appendChild(l1);
+            l.appendChild(dbtn);
+
+            ul.appendChild(l);
+
+
+        }
+        function removeitem(e) {
+            if (e.target.classList.contains("delete")) {
+                if (confirm("Are you sure you want to delete that item?")) {
+                    var li = e.target.parentElement;
+                    ul.removeChild(li);
+                }
+            }
+        }
+        function searchitem(e) {
+            var text = e.target.value.toLowerCase();
+            var items = document.getElementsByTagName("li");
+            Array.from(items).forEach((item) => {
+                itemvalue = item.firstChild.textContent;
+                if (itemvalue.toLowerCase().indexOf(text) != -1) {
+                    item.style.display = "block";
+
+                }
+                else
+                    item.style.display = "none";
+            })
+        }
+    </script>
+    <script>
+        var v = document.getElementById("check");
+        v.addEventListener("click", fname,);
+        function fname() {
+
+            var fn = document.getElementById("fname").value;
+            var ln = document.getElementById("lname").value;
+            var v = fn + ln;
+
+
+            document.getElementById("Funame").value = v;
+
+
+
+        }
+    </script>
+    <script>
+        function address() {
+
+            var adress = document.getElementById("adress").value;
+
+
+            var num = adress.replace(/[0-9]/g, '');
+            document.getElementById("adress").value = num;
+        }
+    </script>
+
+
+
+
+    <p id="para"></p>
+    <p id="para1"></p>
+
+
+
+</body>
+
+</html>
