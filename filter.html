@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>filter</title>
+</head>
+<body style="background-color:silver">
+    <center>
+        <h1 style="text-align:center;color:rebeccapurple">Search Your ID Here</h1>
+        <input type="text" placeholder="search" id="search" style="border-radius:10px;height:20px;width:250px;position:relative"/>
+        <img src="search.png" style="width:15px;height:15px;position:absolute;right:590px;top:13.5px;"/>
+        <ul style="list-style:none">
+            <li style="color:sienna">N180164</li>
+            <li  style="color:sienna">N180698</li>
+            <li  style="color:sienna">N180286</li>
+            <li  style="color:sienna">N180668</li>
+            <li  style="color:sienna">N180168</li>
+            <li  style="color:sienna">N180155</li>
+            <li  style="color:sienna">N180153</li>
+            <li  style="color:sienna">N180143</li>
+            <li  style="color:sienna">N180145</li>
+            <li  style="color:sienna">N180146</li>
+            <li  style="color:sienna">N180147</li>
+            <li  style="color:sienna">N180148</li>
+            <li  style="color:sienna">N180149</li>
+            <li  style="color:sienna">N180160</li>
+            <li  style="color:sienna">N180151</li>
+            <li  style="color:sienna">N180153</li>
+            <li  style="color:sienna">N180152</li>
+            <li  style="color:sienna">N180157</li>
+            <li  style="color:sienna">N180178</li>
+            <li  style="color:sienna">N180187</li>
+            <li  style="color:sienna">N180145</li>
+            <li  style="color:sienna">N180199</li>
+            <li  style="color:sienna">N180343</li>
+            <li  style="color:sienna">N180243</li>
+            <li  style="color:sienna">N180443</li>
+            <li  style="color:sienna">N180543</li>
+            <li  style="color:sienna">N180644</li>
+            <li  style="color:sienna">N180734</li>
+            <li  style="color:sienna">N180824</li>
+            <li  style="color:sienna">N180932</li>
+            <li  style="color:sienna">N180123</li>
+            <li  style="color:sienna">N180111</li>
+            <li  style="color:sienna">N180222</li>
+            <li  style="color:sienna">N180333</li>
+            <li  style="color:sienna">N180444</li>
+            <li  style="color:sienna">N181000</li>
+            <li  style="color:sienna">N180999</li>
+            <li  style="color:sienna">N180888</li>
+            <li  style="color:sienna">N180777</li>
+            <li  style="color:sienna">N180555</li>
+            <li  style="color:sienna">N180502</li>
+            <li  style="color:sienna">N180501</li>
+            <li  style="color:sienna">N180510</li>
+            <li  style="color:sienna">N180610</li>
+            <li  style="color:sienna">N180609</li>
+            <li  style="color:sienna">N180608</li>
+            <li  style="color:sienna">N180606</li>
+            <li  style="color:sienna">N180654</li>
+            <li  style="color:sienna">N180662</li>
+            <li  style="color:sienna">N180605</li>
+            <li  style="color:sienna">N180603</li>
+            <li  style="color:sienna">N180601</li>
+            <li style="color:sienna">N180152</li>
+            <li style="color:sienna">N180124</li>
+            <li style="color:sienna">N180134</li>
+            <li style="color:sienna">N180147</li>
+            <li style="color:sienna">N180188</li>
+            <li style="color:sienna">N180184</li>
+            <li style="color:sienna">N180194</li>
+            <li style="color:sienna">N180284</li>
+            <li style="color:sienna">N180344</li>
+            <li style="color:sienna">N180783</li>
+            <li style="color:sienna">N180674</li>
+            <li style="color:sienna">N180897</li>
+            <li style="color:sienna">N180345</li>
+            <li style="color:sienna">N180341</li>
+            <li style="color:sienna">N180286</li>
+            <li style="color:sienna">N180234</li>
+            <li style="color:sienna">N180789</li>
+            <li style="color:sienna">N180666</li>
+            <li style="color:sienna">N180654</li>
+            <li style="color:sienna">N180235</li>
+            <li style="color:sienna">N180789</li>
+            <li style="color:sienna">N181024</li>
+            <li style="color:sienna">N180987</li>
+            <li style="color:sienna">N180678</li>
+            <li style="color:sienna">N180876</li>
+            <li style="color:sienna">N180567</li>
+            <li style="color:sienna">N180765</li>
+            <li style="color:sienna">N180124</li>
+            <li style="color:sienna">N180345</li>
+        </ul>
+    </center>
+    <script>
+        var search = document.getElementById("search");
+        search.addEventListener("keyup", searchitem, false);
+        function searchitem(e) {
+            var text = e.target.value.toLowerCase();
+            var items = document.getElementsByTagName("li");
+            Array.from(items).forEach((item) => {
+                itemvalue = item.firstChild.textContent;
+                if (itemvalue.toLowerCase().indexOf(text) != -1) {
+                    item.style.display = "block";
+
+                }
+                else
+                    item.style.display = "none";
+            })
+        }
+    </script>
+</body>
+</html>
